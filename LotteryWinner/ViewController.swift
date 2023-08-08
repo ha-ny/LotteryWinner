@@ -25,12 +25,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.titleView = UIImageView.init(image: UIImage(named: "logo"))
+        
         pickerView.delegate = self
         pickerView.dataSource = self
-        drwNoTextField.delegate = self
+        
         drwNoTextField.inputView = pickerView
         drwNoTextField.tintColor = .clear
+        drwNoTextField.delegate = self
+        
         lottoAPI(drwNo: pickerViewList.max()!)
     }
 
@@ -97,6 +101,7 @@ extension ViewController{
             lottoNumberLabel.layer.cornerRadius = lottoNumberLabel.frame.height / 2
             lottoNumberLabel.textColor = .white
             
+            //로또번호는 숫자마다 색이 지정되어 있다는 소문을 들음
             switch Int(drwtNoArray[index])!{
             case ...10: lottoNumberLabel.layer.backgroundColor = lottoColor[0].cgColor
                 case ...20: lottoNumberLabel.layer.backgroundColor = lottoColor[1].cgColor
