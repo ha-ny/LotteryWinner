@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0606B92AB1A7CB00EF8C02 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0606B82AB1A7CB00EF8C02 /* ViewModel.swift */; };
+		3F0606BB2AB1A92300EF8C02 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0606BA2AB1A92300EF8C02 /* Observable.swift */; };
 		3F2C8B182A82682200BBE09B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2C8B172A82682200BBE09B /* AppDelegate.swift */; };
 		3F2C8B1A2A82682200BBE09B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2C8B192A82682200BBE09B /* SceneDelegate.swift */; };
 		3F2C8B1C2A82682200BBE09B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2C8B1B2A82682200BBE09B /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0606B82AB1A7CB00EF8C02 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		3F0606BA2AB1A92300EF8C02 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		3F2C8B142A82682200BBE09B /* LotteryWinner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LotteryWinner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2C8B172A82682200BBE09B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F2C8B192A82682200BBE09B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 				3F2C8B202A82682300BBE09B /* Assets.xcassets */,
 				3F2C8B222A82682300BBE09B /* LaunchScreen.storyboard */,
 				3F2C8B252A82682300BBE09B /* Info.plist */,
+				3F0606B82AB1A7CB00EF8C02 /* ViewModel.swift */,
+				3F0606BA2AB1A92300EF8C02 /* Observable.swift */,
 			);
 			path = LotteryWinner;
 			sourceTree = "<group>";
@@ -152,6 +158,8 @@
 			files = (
 				3F2C8B1C2A82682200BBE09B /* ViewController.swift in Sources */,
 				3F2C8B182A82682200BBE09B /* AppDelegate.swift in Sources */,
+				3F0606B92AB1A7CB00EF8C02 /* ViewModel.swift in Sources */,
+				3F0606BB2AB1A92300EF8C02 /* Observable.swift in Sources */,
 				3F2C8B1A2A82682200BBE09B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

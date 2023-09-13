@@ -11,7 +11,16 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
 
-    @IBOutlet var lottoNumberLabels: [UILabel]! //당첨 번호
+    let viewModel = ViewModel()
+    
+    @IBOutlet var drwtNo1Label: UILabel!
+    @IBOutlet var drwtNo2Label: UILabel!
+    @IBOutlet var drwtNo3Label: UILabel!
+    @IBOutlet var drwtNo4Label: UILabel!
+    @IBOutlet var drwtNo5Label: UILabel!
+    @IBOutlet var drwtNo6Label: UILabel!
+    @IBOutlet var bnusNoLabel: UILabel!
+    
     @IBOutlet var drwNoTextField: UITextField! // 1077회
     @IBOutlet var drwNoDateLabel: UILabel! //로또 추첨일
     @IBOutlet var firstPrzwnerCoLabel: UILabel! //1등 당첨 복권수
@@ -21,7 +30,6 @@ class ViewController: UIViewController {
     let pickerViewList: [Int] = Array(1...1079).sorted(by: >)
     
     let lottoColor: [UIColor] = [UIColor(named: "lottoYello")!,UIColor(named: "lottoBlue")!, UIColor(named: "lottoRed")!, UIColor(named: "lottoGray")!, UIColor(named: "lottoGreen")!]
-    var drwtNoArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +44,41 @@ class ViewController: UIViewController {
         drwNoTextField.delegate = self
         
         lottoAPI(drwNo: pickerViewList.max()!)
+        bindDate()
     }
 
+    func bindDate() {
+
+        //1. Observable listner 실행시 text 변경
+        viewModel.drwtNo1.bind { value in
+            self.drwtNo1Label.text = "\(value)"
+        }
+
+        viewModel.drwtNo2.bind { value in
+            self.drwtNo2Label.text = "\(value)"
+        }
+        
+        viewModel.drwtNo3.bind { value in
+            self.drwtNo3Label.text = "\(value)"
+        }
+        
+        viewModel.drwtNo4.bind { value in
+            self.drwtNo4Label.text = "\(value)"
+        }
+        
+        viewModel.drwtNo5.bind { value in
+            self.drwtNo5Label.text = "\(value)"
+        }
+        
+        viewModel.drwtNo6.bind { value in
+            self.drwtNo6Label.text = "\(value)"
+        }
+        
+        viewModel.bnusNo.bind { value in
+            self.bnusNoLabel.text = "\(value)"
+        }
+    }
+    
     @IBAction func beforeButtonClick(_ sender: UIButton) {
         view.endEditing(true)
         guard let text = Int((drwNoTextField.text?.dropLast(1))!) else { return }
@@ -71,14 +112,14 @@ extension ViewController{
             switch response.result{
             case .success(let value):
                 let json = JSON(value)
-                self.drwtNoArray.append(json["drwtNo1"].rawString()!)
-                self.drwtNoArray.append(json["drwtNo2"].rawString()!)
-                self.drwtNoArray.append(json["drwtNo3"].rawString()!)
-                self.drwtNoArray.append(json["drwtNo4"].rawString()!)
-                self.drwtNoArray.append(json["drwtNo5"].rawString()!)
-                self.drwtNoArray.append(json["drwtNo6"].rawString()!)
-                self.drwtNoArray.append(json["bnusNo"].rawString()!)
-                print(json)
+                //2. Observable listner 실행시 text 변경 ->viewModel value값 변경시 Didset 발동 -> didset 내부에 listner 실행구문있음
+                self.viewModel.drwtNo1.value = json["drwtNo1"].rawString()!
+                self.viewModel.drwtNo2.value = json["drwtNo2"].rawString()!
+                self.viewModel.drwtNo3.value = json["drwtNo3"].rawString()!
+                self.viewModel.drwtNo4.value = json["drwtNo4"].rawString()!
+                self.viewModel.drwtNo5.value = json["drwtNo5"].rawString()!
+                self.viewModel.drwtNo6.value = json["drwtNo6"].rawString()!
+                self.viewModel.bnusNo.value = json["bnusNo"].rawString()!
                 
                 self.drwNoTextField.text = "\(json["drwNo"].rawString()!)회"
                 self.drwNoDateLabel.text =  json["drwNoDate"].rawString()!
@@ -97,24 +138,24 @@ extension ViewController{
     
     func designView(){
         
-        for (index, lottoNumberLabel) in lottoNumberLabels.enumerated(){
-            lottoNumberLabel.layer.cornerRadius = lottoNumberLabel.frame.height / 2
-            lottoNumberLabel.textColor = .white
-            
-            //로또번호는 숫자마다 색이 지정되어 있다는 소문을 들음
-            switch Int(drwtNoArray[index])!{
-            case ...10: lottoNumberLabel.layer.backgroundColor = lottoColor[0].cgColor
-                case ...20: lottoNumberLabel.layer.backgroundColor = lottoColor[1].cgColor
-                case ...30: lottoNumberLabel.layer.backgroundColor = lottoColor[2].cgColor
-                case ...40: lottoNumberLabel.layer.backgroundColor = lottoColor[3].cgColor
-                case ...45: lottoNumberLabel.layer.backgroundColor = lottoColor[4].cgColor
-            default:
-                lottoNumberLabel.layer.backgroundColor = lottoColor[0].cgColor
-            }
-            
-            lottoNumberLabel.text = drwtNoArray[index]
-            lottoNumberLabel.font = .boldSystemFont(ofSize: 20)
-        }
+//        for (index, lottoNumberLabel) in lottoNumberLabels.enumerated(){
+//            lottoNumberLabel.layer.cornerRadius = lottoNumberLabel.frame.height / 2
+//            lottoNumberLabel.textColor = .white
+//
+//            //로또번호는 숫자마다 색이 지정되어 있다는 소문을 들음
+//            switch Int(drwtNoArray[index])!{
+//            case ...10: lottoNumberLabel.layer.backgroundColor = lottoColor[0].cgColor
+//                case ...20: lottoNumberLabel.layer.backgroundColor = lottoColor[1].cgColor
+//                case ...30: lottoNumberLabel.layer.backgroundColor = lottoColor[2].cgColor
+//                case ...40: lottoNumberLabel.layer.backgroundColor = lottoColor[3].cgColor
+//                case ...45: lottoNumberLabel.layer.backgroundColor = lottoColor[4].cgColor
+//            default:
+//                lottoNumberLabel.layer.backgroundColor = lottoColor[0].cgColor
+//            }
+//
+//            lottoNumberLabel.text = drwtNoArray[index]
+//            lottoNumberLabel.font = .boldSystemFont(ofSize: 20)
+//        }
     }
     
     //1등 당첨액 콤마 넣어주기

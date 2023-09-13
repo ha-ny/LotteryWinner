@@ -223,17 +223,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Rh-0t-9tL"/>
                     <connections>
+                        <outlet property="bnusNoLabel" destination="Kst-lN-W2t" id="Phx-UR-u89"/>
                         <outlet property="drwNoDateLabel" destination="voX-C7-hcA" id="Qak-dl-4Jb"/>
                         <outlet property="drwNoTextField" destination="rlh-mx-DNK" id="lUV-7a-Adn"/>
+                        <outlet property="drwtNo1Label" destination="139-re-nJX" id="uSa-ef-Uus"/>
+                        <outlet property="drwtNo2Label" destination="inL-B9-g8y" id="uIY-2O-6r1"/>
+                        <outlet property="drwtNo3Label" destination="Bro-Je-91a" id="y2l-IJ-asg"/>
+                        <outlet property="drwtNo4Label" destination="9fW-Ww-3cc" id="qR4-lz-VXX"/>
+                        <outlet property="drwtNo5Label" destination="tGH-Xj-wNJ" id="SlL-9g-clp"/>
+                        <outlet property="drwtNo6Label" destination="Khb-xR-o4R" id="Yw4-UF-vYf"/>
                         <outlet property="firstAccumamntLabel" destination="gpC-6N-AI3" id="OXz-iI-0fE"/>
                         <outlet property="firstPrzwnerCoLabel" destination="SDi-Gu-vpI" id="PVx-Eh-mVT"/>
-                        <outletCollection property="lottoNumberLabels" destination="139-re-nJX" collectionClass="NSMutableArray" id="ddh-KK-wdg"/>
-                        <outletCollection property="lottoNumberLabels" destination="inL-B9-g8y" collectionClass="NSMutableArray" id="GlW-Uk-jIn"/>
-                        <outletCollection property="lottoNumberLabels" destination="Bro-Je-91a" collectionClass="NSMutableArray" id="lhG-9i-kRC"/>
-                        <outletCollection property="lottoNumberLabels" destination="9fW-Ww-3cc" collectionClass="NSMutableArray" id="B90-KC-563"/>
-                        <outletCollection property="lottoNumberLabels" destination="tGH-Xj-wNJ" collectionClass="NSMutableArray" id="mPf-nC-B4b"/>
-                        <outletCollection property="lottoNumberLabels" destination="Khb-xR-o4R" collectionClass="NSMutableArray" id="pgP-0j-gxP"/>
-                        <outletCollection property="lottoNumberLabels" destination="Kst-lN-W2t" collectionClass="NSMutableArray" id="YCf-oO-KMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
